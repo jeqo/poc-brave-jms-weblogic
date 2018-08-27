@@ -1,0 +1,10 @@
+---
+version: '3'
+services:
+  weblogic:
+    image: store/oracle/weblogic:12.2.1.3-dev
+    ports:
+      - 7001:7001
+      - 9002:9002
+    volumes:
+      - ./domain.properties:/u01/oracle/properties/domain.properties
