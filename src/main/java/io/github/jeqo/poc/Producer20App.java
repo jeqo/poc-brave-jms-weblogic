@@ -13,6 +13,7 @@ public final class Producer20App extends BaseApp {
     try (JMSContext context = jmsTracing.connectionFactory(connectionFactory()).createContext()) {
       Destination queue = context.createQueue(destinationName);
       context.createProducer().send(queue, text);
+      System.out.println("Message sent");
     }
   }
 

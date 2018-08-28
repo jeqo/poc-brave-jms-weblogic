@@ -23,7 +23,7 @@ public final class ConsumerApp extends BaseApp {
       brave.Span span = jmsTracing.nextSpan(textMessage).name("print").start();
       String body = textMessage.getText();
       span.finish();
-      out.println(body);
+      out.println("Message received: " + body);
     }
   }
 

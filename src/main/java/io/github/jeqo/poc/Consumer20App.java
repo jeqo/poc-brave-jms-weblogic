@@ -1,8 +1,6 @@
 package io.github.jeqo.poc;
 
-import javax.jms.Destination;
-import javax.jms.JMSConsumer;
-import javax.jms.JMSContext;
+import javax.jms.*;
 import javax.naming.NamingException;
 
 import static java.lang.System.out;
@@ -13,16 +11,17 @@ public final class Consumer20App extends BaseApp {
     super("jms-consumer-2.0");
   }
 
-  private void consume() throws NamingException {
+  private void consume() throws NamingException, JMSException {
     try (JMSContext context = jmsTracing.connectionFactory(connectionFactory()).createContext()) {
       Destination queue = context.createQueue(destinationName);
       JMSConsumer consumer = context.createConsumer(queue);
-      String body = consumer.receiveBody(String.class);
-      out.println(body);
+      // consumer.receiveBody does not support propagation of tracing context.
+      TextMessage body = (TextMessage) consumer.receive();
+      out.println("Message received: " + body.getText());
     }
   }
 
-  public static void main(String[] args) throws NamingException, InterruptedException {
+  public static void main(String[] args) throws NamingException, InterruptedException, JMSException {
     Consumer20App app = new Consumer20App();
 
     app.consume();

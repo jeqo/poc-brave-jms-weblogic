@@ -19,6 +19,8 @@ public final class ProducerApp extends BaseApp {
       Message message = session.createTextMessage(text);
 
       messageProducer.send(message);
+
+      System.out.println("Message sent");
     }
   }
   public static void main(String[] args) throws JMSException, InterruptedException, NamingException {
