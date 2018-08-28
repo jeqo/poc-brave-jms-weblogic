@@ -8,9 +8,8 @@
   <artifactId>poc-brave-jms-weblogic</artifactId>
   <version>0.1.0-SNAPSHOT</version>
 
-  <name>poc-brave-jms-weblogic</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <name>POC: Brave Instrumentation for WebLogic JMS</name>
+  <url>https://github.com/jeqo/poc-brave-jms-weblogic</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -37,6 +36,12 @@
       <groupId>io.zipkin.brave</groupId>
       <artifactId>brave-instrumentation-jms</artifactId>
       <version>5.2.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.typesafe</groupId>
+      <artifactId>config</artifactId>
+      <version>1.3.3</version>
     </dependency>
 
     <dependency>
