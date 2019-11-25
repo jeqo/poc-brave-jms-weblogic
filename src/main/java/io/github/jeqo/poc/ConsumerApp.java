@@ -19,11 +19,12 @@ public final class ConsumerApp extends BaseApp {
       MessageConsumer messageConsumer = session.createConsumer(queue);
 
       connection.start();
-      TextMessage textMessage = (TextMessage) messageConsumer.receive();
-      brave.Span span = jmsTracing.nextSpan(textMessage).name("print").start();
-      String body = textMessage.getText();
-      span.finish();
-      out.println("Message received: " + body);
+      //TextMessage textMessage = (TextMessage) messageConsumer.receive();
+      messageConsumer.receive();
+      //brave.Span span = jmsTracing.nextSpan(textMessage).name("print").start();
+      //String text = textMessage.readByte();
+      //span.finish();
+      //out.println("Message received: " + text);
     }
   }
 

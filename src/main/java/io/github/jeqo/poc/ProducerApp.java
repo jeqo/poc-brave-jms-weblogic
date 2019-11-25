@@ -16,7 +16,9 @@ public final class ProducerApp extends BaseApp {
       Destination queue = session.createQueue(destinationName);
       MessageProducer messageProducer = session.createProducer(queue);
 
-      Message message = session.createTextMessage(text);
+      //Message message = session.createTextMessage(text);
+      BytesMessage message = session.createBytesMessage();
+      message.writeBytes(text.getBytes());
 
       messageProducer.send(message);
 
@@ -29,5 +31,5 @@ public final class ProducerApp extends BaseApp {
     app.send("Hola mundo");
 
     Thread.sleep(10_000L);
-  }
+   }
 }
